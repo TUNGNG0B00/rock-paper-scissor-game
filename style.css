@@ -1,0 +1,156 @@
+
+/* Font settings */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
+
+video {
+  position: absolute;
+  width: 210%;
+  z-index: -1000;
+  transform: translate(-50%, -50%);
+  
+}
+
+.title {
+  text-align: center;
+  padding: 200px;
+}
+
+.subTitle{
+  padding-top: -130px;
+}
+
+.buttons {
+  position: absolute;
+  display: flex;
+  margin-top: 1000px;
+  top: 10%;
+  padding: 100px;
+  left: 10%;
+
+}
+
+
+img {
+padding: 50px;
+}
+
+button {
+  position: absolute;
+  margin-top: 300px;
+  margin-left: -200px;
+
+
+}
+
+
+.shiny-text {
+ 
+  font-size: 60px;
+  color: #fff;
+  background: -webkit-linear-gradient(#eee, rgb(255, 255, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+  opacity: 0.9;
+  text-shadow:  0 0 1em rgb(255, 255, 255), 0 0 0.2em rgb(255, 255, 255);
+}
+
+.scroll {
+  position: fixed;
+  top: 90%;
+  left: 49%;
+  animation: fadeIn 2s;
+ 
+}
+
+.scroll.hide {
+  animation: fadeOut 2s forwards;
+}
+
+/* animation effect for scroll */
+
+@keyframes shine {
+  0% {background-position: -500px;}
+  100% {background-position: 500px;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
+
+p {
+  margin-top: 1000px;
+  margin-left: 460px;
+  
+ 
+}
+
+#result.typingEffect {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(29), cursor .4s step-end infinite alternate;
+}
+
+/* animation typing */
+
+@keyframes cursor {
+  50% { border-color: transparent }
+}
+
+@keyframes typing {
+  from { width: 0 }
+}
+
+/* Button container positioning */
+
+button {
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+ box-shadow: 0 0 5px cyan,
+ 0 0 25px cyan;
+
+}
+
+/* button hover effect */
+button:hover {
+  box-shadow: 0 0 5px cyan,
+  0 0 25px cyan, 0 0 50px cyan,
+  0 0 100px cyan, 0 0 200px cyan;
+ }
+
+audio {
+  display: none;
+}
+
+a {
+  background-color: white;
+}
+
+
+

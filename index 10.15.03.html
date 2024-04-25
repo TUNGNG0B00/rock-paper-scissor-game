@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- Set character encoding -->
+   <meta charset="UTF-8">
+   <!-- Link to external stylesheet -->
+   <link rel="stylesheet" href="style.css">
+   <!-- Title of the page -->
+   <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+
+   <!-- Title section -->
+   <div class="title">
+      <!-- Main title with shiny text effect -->
+      <h1 class="shiny-text">Sun/Moon/Star</h1>
+      <!-- Subtitle -->
+      <h2 class ="subTitle">Online</h2>
+      <!-- Scroll indicator -->
+      <h5 class="scroll" id="scrollText">Scroll</h5>
+   </div>
+
+   <!-- Button section -->
+   <div class="buttons" >
+      <!-- Moon button -->
+      <div> 
+         <!-- Moon image -->
+         <img src="moon1.gif" alt="moon" height="200" width="200">
+         <!-- Button to choose Moon -->
+         <button  onclick="playGame('moon')">Moon</button>
+      </div>
+
+      <!-- Sun button -->
+      <div> 
+         <!-- Sun image -->
+         <img src="sun1.gif" alt="sun" height="220" width="220">
+         <!-- Button to choose Sun -->
+         <button  onclick="playGame('sun')">Sun</button>
+      </div>
+
+      <!-- Star button -->
+      <div> 
+         <!-- Star image -->
+         <img src="star1.gif" alt="star" height="200" width="200">
+         <!-- Button to choose Star -->
+         <button  onclick="playGame('star')">Star</button>
+      </div>
+   </div>
+
+   <!-- Background video -->
+   <video autoplay loop muted playsinline>
+      <source src="backgroundVideoSpace.mp4" type="video/mp4">
+   </video>
+
+   <!-- Result display area -->
+   <p id="result"></p>
+
+   <!-- JavaScript code -->
+   <script>
+      // Initialize variables for points
+      var computerPoint=0;
+      var humanPoint=0;
+
+      // Function to play the game
+      function playGame(playerChoice) {
+         // Array of choices: Moon, Sun, Star
+         var choices = ['moon', 'sun', 'star'];
+         // Randomly select computer's choice
+         var computerChoice = choices[Math.floor(Math.random() * 3)];
+         // Initialize result string
+         var result = '';
+         // Get result element
+         var resultElement = document.getElementById("result");
+
+         // Determine winner or tie
+         if (playerChoice === computerChoice) {
+            result = 'You: '+computerPoint+'  Computer: ' +humanPoint+'\n';
+            result += 'It\'s a tie!';
+         } else if (
+            (playerChoice === 'moon' && computerChoice === 'star') ||
+            (playerChoice === 'star' && computerChoice === 'sun') ||
+            (playerChoice === 'sun' && computerChoice === 'moon')
+         ) {
+            computerPoint++;
+            result = 'You: '+computerPoint+'  Computer: ' +humanPoint+'\n';
+            result += 'You win!';
+         } else {
+            humanPoint++;
+            result = 'You: '+computerPoint+'  Computer: ' +humanPoint+'\n';
+            result += 'You lose!';
+         }
+
+         // Append player and computer choices to result
+         result += ' (Player chose ' + playerChoice + ', Computer chose ' + computerChoice + ')';
+
+         // Check for game end conditions
+         if (computerPoint >= 3) {
+            result += "\n Human wins the game!";
+            computerPoint = 0; 
+            humanPoint = 0;
+         } else if (humanPoint >= 3) {
+            result +=  "\n Computer wins the game!";
+            computerPoint = 0; 
+            humanPoint = 0;
+         }
+
+         // Display result with typing animation
+         resultElement.textContent = result; 
+         resultElement.classList.remove("typingEffect");
+         setTimeout(function(){
+            resultElement.innerText = result;
+            resultElement.classList.add("typingEffect");
+         }, 1);
+      }
+
+      // Hide scroll indicator when scrolled
+      window.onscroll = function() {hideScrollText()};
+
+      // Function to hide scroll indicator
+      function hideScrollText() {
+         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scrollText").classList.add("hide");
+         } else {
+            document.getElementById("scrollText").classList.remove("hide");
+         }
+      }
+   </script>
+</body>
+</html>
